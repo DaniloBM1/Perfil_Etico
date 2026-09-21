@@ -5,17 +5,15 @@
 
 #define nc 3 // Quantiade de casos
 
-void menu(char **frases, char **resp);
-void questoes(char **frases);
-void respostas(char **resp);
-void crescente(char **frases, char **resp);
+typedef struct {
+	int dilemas;
+	int alternativas;
+} Respostas;
 
-int main () {
-        char **frases, **resp;
-
-        questoes(frases);
-        respostas(resp);
-        menu(frases, resp);
-
-        return 0;
-}
+void menu(char **frases, char **resp, Respostas historico[nc]);
+char *criarString(char *texto);
+void questoes(char ***frases);
+void respostas(char ***resp);
+void crescente(char **frases, char **resp, Respostas historico[nc]);
+void salvarHistorico(Respostas historico[nc]);
+void acessarHistorico(Respostas historico[nc]);
