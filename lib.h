@@ -6,8 +6,8 @@
 #define nc 3 // Quantiade de casos
 
 typedef struct {
-	int dilemas;
-	int alternativas;
+        int dilemas;
+        int alternativas;
 } Respostas;
 
 void menu(char **frases, char **resp, Respostas historico[nc]);
