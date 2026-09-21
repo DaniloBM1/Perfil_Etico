@@ -20,36 +20,36 @@ void menu(char **frases, char **resp, Respostas historico[]) {
 		do {
 			printf("\n\n");
 				
-			printf("[1] Dilemas em ordem crescente\n");
-			printf("[2] Dilemas em ordem aleatoria\n");
-			printf("[3] Continuar o Questionario\n");
-			printf("[4] Formatar Dados\n");
-			printf("[5] Acessar Historico\n");
-			printf("[6] Sair\n");
+			printf("[1] Dilemas\n");
+		//	printf("[2] Dilemas em ordem aleatoria\n");
+		//	printf("[3] Continuar o Questionario\n");
+			printf("[2] Formatar Dados\n");
+			printf("[3] Acessar Historico\n");
+			printf("[4] Sair\n");
 		
 				printf("\nSelecione uma opcao: ");
 				scanf("%d",& op);
 
-				if (op < 1 || op > 6){
+				if (op < 1 || op > 4){
 					printf("\nOpcao invalida!!! Tente novamente");
 				}
-		} while(op < 1 || op > 6);
+		} while(op < 1 || op > 4);
 
 		switch (op) {
 		case 1:
 			crescente(frases, resp, historico);
 			break;
-		case 3:
+	/*	case 3:
 			continuar(frases, resp, historico);
-			break;
-		case 4:
+			break;*/
+		case 2:
 			printf("Removido com sucesso!!!");
 			remove("historico.dat");
 			break;
-		case 5:
+		case 3:
 			acessarHistorico(historico);
 			break;
-		case 6:
+		case 4:
 			FILE *teste = fopen("historico.dat", "rb");
 			if (teste != NULL) {
 				salvarHistorico(historico);
@@ -57,7 +57,7 @@ void menu(char **frases, char **resp, Respostas historico[]) {
 			printf("\nencerrando programa...\n");
 			break;
 		}
-	} while (op != 6);
+	} while (op != 4);
 }
 
 char *criarString(char *texto) {
@@ -144,14 +144,12 @@ void continuar(char **frases, char **resp, Respostas historico[]) {
 		int i, a;
 	
 	for (i = 0; i<nc; i++) {
-		if (historico.dilemas[i]==0) {
-			printf("\n%s", frases[i]
+		if (historico[i].dilemas==0) {
+			printf("\n%s", frases[i]);
 			printf("Selecione: ");
 			scanf("%d",& a);
-			if (a!=0) {
 			historico[i].dilemas = i;
 			scanf("%d",& historico[i].alternativas);
-
 			printf("\nAnalises:\n");
 			printf("\n%s\n", resp[i]);
 			printf("Pressione qualquer tecla para continuar ...");
