@@ -2,7 +2,7 @@
 
 int main () {
         char **frases, **resp;
-	Respostas historico[nc];
+	Respostas historico[nc] = {0};
 
         questoes(&frases);
         respostas(&resp);
@@ -15,7 +15,7 @@ void menu(char **frases, char **resp, Respostas historico[]) {
 	int op;
 
 	do {
-		printf("\nBem vindo ao questionario casos morais e etica!!!");
+		printf("\nBem vindo ao menu!!!");
 		
 		do {
 			printf("\n\n");
@@ -38,6 +38,9 @@ void menu(char **frases, char **resp, Respostas historico[]) {
 		switch (op) {
 		case 1:
 			crescente(frases, resp, historico);
+			break;
+		case 3:
+			continuar(frases, resp, historico);
 			break;
 		case 4:
 			printf("Removido com sucesso!!!");
@@ -107,6 +110,9 @@ void crescente (char **frases, char **resp, Respostas historico[]) {
 		scanf("%d",& historico[i].alternativas);
 		printf("\nAnalises:\n");
 		printf("\n%s\n", resp[i]);
+		printf("Pressione qualquer tecla para continuar ...");
+		getchar();
+		getchar();
 	}
 	salvarHistorico(historico);
 }
@@ -130,6 +136,29 @@ void acessarHistorico(Respostas historico[]) {
 	}
 	fread(historico, sizeof(Respostas), nc, arquivo);
 	for (int i = 0; i < nc; i++) {
-		printf("Dilema %d: voce escolheu a alternativa %d\n", historico[i].dilemas, historico[i].alternativas);
+		printf("Dilema %d: voce escolheu a alternativa %d\n", historico[i].dilemas+1, historico[i].alternativas);
 	}
+}
+
+void continuar(char **frases, char **resp, Respostas historico[]) {
+		int i, a;
+	
+	for (i = 0; i<nc; i++) {
+		if (historico.dilemas[i]==0) {
+			printf("\n%s", frases[i]
+			printf("Selecione: ");
+			scanf("%d",& a);
+			if (a!=0) {
+			historico[i].dilemas = i;
+			scanf("%d",& historico[i].alternativas);
+
+			printf("\nAnalises:\n");
+			printf("\n%s\n", resp[i]);
+			printf("Pressione qualquer tecla para continuar ...");
+			getchar();
+			getchar();
+		}
+	}
+	printf("\nTodos dilemas foram respondidos");
+	salvarHistorico(historico);
 }
