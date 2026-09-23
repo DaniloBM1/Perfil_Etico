@@ -39,11 +39,11 @@ void menu(char **frases, char **resp, Respostas historico[]) {
 		case 1:
 			crescente(frases, resp, historico);
 			break;
-	/*	case 3:
+	/*	case 5:
 			continuar(frases, resp, historico);
 			break;*/
 		case 2:
-			printf("Removido com sucesso!!!");
+			printf("\nRemovido com sucesso!!!\n");
 			remove("historico.dat");
 			break;
 		case 3:

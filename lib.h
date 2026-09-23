@@ -18,3 +18,5 @@ void crescente(char **frases, char **resp, Respostas historico[nc]);
 void salvarHistorico(Respostas historico[nc]);
 void acessarHistorico(Respostas historico[nc]);
 void continuar(char **frases, char **resp, Respostas historico[]);
+void pontos(Respostas historico[nc]);
+void perfilEtico(float prk, float prb, float prm);
